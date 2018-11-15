@@ -1,0 +1,105 @@
+
+
+<head>
+
+    <style>
+   * {box-sizing:border-box}
+.table-scroll {
+  position: relative;
+  top:85px;
+  max-width: 1280px;
+  width:100%;
+  margin: auto;
+  display:table;
+}
+
+.table-scroll table {
+  width: 100%;
+  margin: auto;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+.table-scroll th, .table-scroll td {
+  padding: 5px 10px;
+  border: 1px solid #000;
+  background: #fff;
+  vertical-align: top;
+}
+.table-scroll table.clone, .table-scroll table.clone2 {
+  position: absolute;
+  top: -85px;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+}
+.table-scroll table.clone2 {
+  top: auto;
+  bottom: -85px;
+}
+.clone tbody, .clone tfoot {
+  visibility: hidden;
+  border-color: transparent;
+}
+.clone2 tbody, .clone2 thead {
+  visibility: hidden;
+  border-color: transparent;
+}
+.clone thead th, .clone2 tfoot th, .clone2 tfoot td {
+  background: #ccc;
+  visibility:visible;
+}
+
+.clones thead td,
+.clones thead th,
+.clones tfoot td,
+.clones tfoot th {height:85px;vertical-align:middle;line-height:normal;padding: 5px 10px;}
+
+.main-header-title {
+    font-family: GothamBook;
+    font-size: 29px;
+    line-height: 2;
+    text-align: left;
+    /* padding-left: 25px; */
+    padding-bottom: 5px;
+    color: #f47c2d;
+            text-align: center !important;
+    </style>
+</head>
+
+<body ng-app="UserModule">
+    <div ng-controller="UserController as vm">
+
+<div class="main-header-title"> User Details</div>
+            <div id="table-scroll" class="table-scroll">
+                    <div id="faux-table" class="faux-table" aria="hidden"></div>
+                    <div class="table-wrap">
+                      <table id="main-table" class="main-table">
+                        <thead>
+                          <tr>
+                            <th scope="col" ng-click="vm.getSortData('id', idflag)">ID</th>
+                            <th scope="col" ng-click="vm.getSortData('userId', userIdflag)">User Id</th>
+                            <th scope="col" ng-click="vm.getSortData('title', titleFlag)">Title</th>
+                            <th scope="col" ng-click="vm.getSortData('body', bodyFlag)">Body</th>
+                           
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr ng-repeat="user in UserData">
+                           
+                            <td ng-bind="user.id">Cell content</td>
+                            <td  ng-bind="user.userId">Cell content</td>
+                            <td ng-bind="user.title">Cell content</td>
+                            <td ng-bind="user.body">Cell content</td>
+                          </tr>
+                        
+                        </tfoot>
+                      </table>
+                    </div>
+                  </div>
+
+
+       
+           
+    </div>
+</body>
+
